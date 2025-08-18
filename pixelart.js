@@ -128,3 +128,35 @@ eraserBtn.addEventListener('click', () => {
 
 eraserBtn.classList.remove('active');
 createGrid();
+
+function saveDrawing() {
+    localStorage.setItem('pixelArtData', JSON.stringify({
+        rows,
+        cols,
+        pixelData
+    }));
+    alert('¡Dibujo guardado para continuar después!');
+}
+
+function loadDrawing() {
+    const data = localStorage.getItem('pixelArtData');
+    if (data) {
+        const obj = JSON.parse(data);
+        rowsInput.value = obj.rows;
+        colsInput.value = obj.cols;
+        createGrid();
+        for (let r = 0; r < obj.rows; r++) {
+            for (let c = 0; c < obj.cols; c++) {
+                const color = obj.pixelData[r][c];
+                if (color) {
+                    const idx = r * obj.cols + c;
+                    const pixel = pixelart.children[idx];
+                    pixel.style.background = color;
+                    pixelData[r][c] = color;
+                }
+            }
+        }
+    }
+}
+
+window.addEventListener('DOMContentLoaded', loadDrawing);
