@@ -8,6 +8,33 @@ const colorPicker = document.getElementById('colorPicker');
 const rowsInput = document.getElementById('rows');
 const colsInput = document.getElementById('cols');
 const eraserBtn = document.getElementById('eraserBtn');
+const langSelect = document.getElementById('langSelect');
+let currentLang = langSelect ? langSelect.value : 'es';
+
+const translations = {
+    es: {
+        rows: 'Alto:',
+        cols: 'Ancho:',
+        color: 'Color:',
+        create: 'Crear lienzo',
+        eraser: 'Goma',
+        clear: 'Limpiar',
+        save: 'Guardar',
+        export: 'Exportar PNG',
+        saved: '¡Dibujo guardado para continuardespués!'
+    },
+    en: {
+        rows: 'Rows:',
+        cols: 'Cols:',
+        color: 'Color:',
+        create: 'Create grid',
+        eraser: 'Eraser',
+        clear: 'Clear',
+        save: 'Save',
+        export: 'Export PNG',
+        saved: 'Drawing saved to continue later!'
+    }
+};
 
 function createGrid() {
     rows = parseInt(rowsInput.value);
@@ -129,13 +156,33 @@ eraserBtn.addEventListener('click', () => {
 eraserBtn.classList.remove('active');
 createGrid();
 
+function setLanguage(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.sidebar label')[0].childNodes[0].textContent = translations[lang].rows + ' ';
+    document.querySelectorAll('.sidebar label')[1].childNodes[0].textContent = translations[lang].cols + ' ';
+    document.querySelectorAll('.sidebar label')[2].childNodes[0].textContent = translations[lang].color + ' ';
+    document.querySelectorAll('.sidebar button')[0].textContent = translations[lang].create;
+    document.querySelectorAll('.sidebar button')[1].textContent = translations[lang].eraser;
+    document.querySelectorAll('.sidebar button')[2].textContent = translations[lang].clear;
+    document.querySelectorAll('.sidebar button')[3].textContent = translations[lang].save;
+    document.querySelectorAll('.sidebar button')[4].textContent = translations[lang].export;
+}
+
+if (langSelect) {
+    langSelect.addEventListener('change', function() {
+        setLanguage(langSelect.value);
+    });
+    setLanguage(langSelect.value);
+}
+
+// Sobrescribir alert en saveDrawing para multi-idioma
 function saveDrawing() {
     localStorage.setItem('pixelArtData', JSON.stringify({
         rows,
         cols,
         pixelData
     }));
-    alert('¡Dibujo guardado para continuar después!');
+    alert(translations[currentLang].saved);
 }
 
 function loadDrawing() {
@@ -160,3 +207,4 @@ function loadDrawing() {
 }
 
 window.addEventListener('DOMContentLoaded', loadDrawing);
+setLanguage('es');
