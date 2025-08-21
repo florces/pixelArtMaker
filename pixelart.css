@@ -1,3 +1,6 @@
+/*
+    ESTILOS GENERALES
+*/
 body {
     background: #222;
     color: #fff;
@@ -7,22 +10,51 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 h1 {
-    margin: 32px 0 32px 0;
+    margin: 32px 0;
     font-size: 2rem;
     letter-spacing: 2px;
     text-align: center;
-    width: 100vw;
+    width: 100%;
 }
+
 .main-layout {
     flex: 1 1 auto;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    width: 100vw;
+    width: 100%;
     min-height: 0;
+    position: relative;
 }
+
+/*
+    SELECTOR DE IDIOMA
+*/
+.language-section {
+    position: absolute;
+    top: 0;
+    right: 20px;
+}
+
+#langSelect {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.7rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    background: #555;
+    color: #fff;
+    -webkit-appearance: menulist-button;
+    -moz-appearance: menulist-button;
+    appearance: menulist-button;
+}
+
+/*
+    BARRA LATERAL (SIDEBAR)
+*/
 .sidebar {
     background: #333;
     padding: 24px 18px;
@@ -39,6 +71,7 @@ h1 {
     left: 0;
     top: 120px;
 }
+
 .sidebar label {
     font-size: 1rem;
     margin-bottom: 4px;
@@ -47,16 +80,16 @@ h1 {
     width: 100%;
     justify-content: space-between;
 }
+
 .sidebar input[type="number"] {
     width: 60px;
     font-size: 1rem;
     padding: 2px 6px;
     border-radius: 4px;
     border: none;
-    margin-left: 0;
-    margin-right: 0;
     text-align: right;
 }
+
 .sidebar input[type="color"] {
     width: 40px;
     height: 40px;
@@ -64,6 +97,7 @@ h1 {
     margin-left: 8px;
     cursor: pointer;
 }
+
 .sidebar button {
     font-family: inherit;
     font-size: 1rem;
@@ -77,16 +111,23 @@ h1 {
     margin-bottom: 4px;
     width: 100%;
 }
+
 .sidebar button.borrador {
     background: #4caf50;
 }
+
 .sidebar button.borrador.active {
     background: #e53935;
     border: 2px solid #fff;
 }
+
 .sidebar button:hover:not(.borrador) {
     background: #388e3c;
 }
+
+/*
+    SECCIÓN DEL PIXEL ART
+*/
 .pixelart-section {
     display: flex;
     flex-direction: column;
@@ -94,6 +135,7 @@ h1 {
     flex: 1 1 auto;
     width: 100%;
 }
+
 #pixelart-container {
     background: #444;
     padding: 24px;
@@ -103,13 +145,17 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 100%;
+    overflow: auto;
 }
+
 #pixelart {
     display: grid;
     background: #fff0;
     box-shadow: 0 2px 8px #0004;
     user-select: none;
 }
+
 .pixel {
     width: 24px;
     height: 24px;
@@ -119,9 +165,14 @@ h1 {
     transition: background 0.1s;
     border: 1px solid #555;
 }
+
 .pixel:active {
     outline: 2px solid #fff8;
 }
+
+/*
+    FOOTER
+*/
 footer {
     width: 100%;
     text-align: center;
@@ -135,35 +186,112 @@ footer {
     position: relative;
     bottom: 0;
 }
+
+/*
+    MEDIA QUERIES (OPTIMIZACIÓN PARA DISPOSITIVOS)
+*/
+
 @media (max-width: 1100px) {
-    .sidebar {
-        position: static;
-        margin-right: 0;
-        margin-bottom: 24px;
-        width: 100vw;
-        border-radius: 0 0 12px 12px;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 12px;
-    }
     .main-layout {
         flex-direction: column;
         align-items: center;
+        gap: 20px;
     }
+
+    .language-section {
+        position: static;
+        width: 100%;
+        text-align: right;
+        padding-right: 20px;
+        margin-top: 10px;
+    }
+
+    .sidebar {
+        position: static;
+        margin-right: 0;
+        margin-left: 0;
+        margin-top: 20px;
+        margin-bottom: 0;
+        width: 90%;
+        max-width: 500px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .sidebar label {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.8rem;
+    }
+
+    .sidebar input[type="number"],
+    .sidebar input[type="color"] {
+        width: 100%;
+        max-width: 80px;
+        text-align: center;
+    }
+
+    .sidebar button {
+        width: auto;
+        flex-grow: 1;
+    }
+
     .pixelart-section {
-        width: 100vw;
+        order: -1;
+        width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
     }
 }
+
 @media (max-width: 600px) {
-    #pixelart-container {
-        padding: 6px;
+    h1 {
+        font-size: 1.5rem;
+        margin: 20px 0;
     }
+
+    .sidebar {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .sidebar label {
+        font-size: 0.7rem;
+    }
+
+    .sidebar input[type="number"],
+    .sidebar input[type="color"] {
+        max-width: 60px;
+    }
+
+    .sidebar button {
+        font-size: 0.7rem;
+        padding: 8px 10px;
+    }
+
+    #pixelart-container {
+        padding: 10px;
+    }
+
     .pixel {
         width: 16px;
         height: 16px;
     }
-    h1 {
-        font-size: 1.1rem;
+
+    footer {
+        font-size: 0.6rem;
+    }
+
+    /* Estilos del selector de idioma en móviles */
+    #langSelect {
+        padding: 5px;
+        font-size: 0.8rem;
+        height: auto;
+        width: auto;
+        -webkit-appearance: menulist-button;
+        -moz-appearance: menulist-button;
+        appearance: menulist-button;
     }
 }
