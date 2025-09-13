@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
+    <!-- Start: detalles de la pagina -->
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index,follow" />
+    <meta name="keywords" content="Pendiente">
+    <!-- Un máximo de 60 caracteres -->
     <title>PixelArt Maker</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="pixelart.css">
+    <!-- Un máximo de 160 caracteres -->
+    <meta name="description" content="Pendiente">
+    <link rel="canonical" href="<?php echo BASE_URL; ?>" />
+    <!-- End: detalles de la pagina -->
+
+    <!-- Start: icono -->
+    <link rel="icon" type="image/x-icon" href="">
+    <!-- End: icono -->
+
+    <!-- Start: estilos -->
+    <link rel="stylesheet" href="assets/styles/origen.css" />
+    <link rel="stylesheet" media="(min-width: 480px)" href="assets/styles/movil.css" />
+    <link rel="stylesheet" media="(min-width: 768px)" href="assets/styles/tableta.css" />
+    <link rel="stylesheet" media="(min-width: 1024px)" href="assets/styles/computadora.css" />
+    <!-- End: estilos -->
+
+    <!-- Start: fuente -->
+    <!-- End: fuente -->
+
 </head>
 <body>
+    
     <h1>PixelArt Maker</h1>
     <div style="position: absolute; top: 18px; right: 32px; z-index: 10;">
         <select id="langSelect" style="font-family: inherit; font-size: 1rem; padding: 6px 12px; border-radius: 6px; border: none; background: #333; color: #fff;">
@@ -32,9 +56,8 @@
             </div>
         </div>
     </div>
-    <script src="pixelart.js"></script>
-    <footer>
-        PixelArt Maker &copy; 2025 
-    </footer>
+
+    <script src="js/pixelart.js"></script>
+
 </body>
 </html>
