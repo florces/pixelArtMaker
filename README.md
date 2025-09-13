@@ -19,6 +19,6 @@ Feel free to fork this project and suggest improvements.
 
 - Habilitación de una demo en GitHub Pages para que pueda visualizarse.
 
-### <a href="https://soyceros.github.io/pixelArtMaker" target="_blank">Visita la Demo en línea</a>
+🌐 **Demo en línea:** [https://soyceros.github.io/pixelArtMaker](https://soyceros.github.io/pixelArtMaker)
 
 > Nota: Esta demo y las mejoras están realizadas desde mi fork con el objetivo de facilitar la revisión y posterior integración al proyecto original.
